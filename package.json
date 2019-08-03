@@ -1,0 +1,23 @@
+{
+  "name": "instagram-graph",
+  "version": "1.0.0",
+  "description": "Instagram social network graph.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bartolomej/instagram-graph.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bartolomej/instagram-graph/issues"
+  },
+  "homepage": "https://github.com/bartolomej/instagram-graph#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "puppeteer": "^1.19.0"
+  }
+}
