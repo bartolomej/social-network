@@ -1,9 +1,8 @@
 const puppeteer = require('puppeteer');
 const $ = require('cheerio');
-const path = require('path');
 
 
-module.exports.scrapeProfileHtml = async (username, password, user, imgFolder) => {
+module.exports.scrapeProfileHtml = async (username, password, user) => {
   const browser = await puppeteer.launch({headless: false});
   const page = await browser.newPage();
 
@@ -18,18 +17,17 @@ module.exports.scrapeProfileHtml = async (username, password, user, imgFolder) =
   await page.goto(`https://www.instagram.com/${user}`);
   await page.waitForSelector('img', {visible: true});
 
-  await page.screenshot({path: path.join(imgFolder, `${user}.png`)});
+  await page.screenshot({path: `${user}.png`});
 
   const details = await page.evaluate(() => {
     const details = document.getElementsByClassName('Y8-fY');
-
     return Array.from(details).map(ele => ele.innerHTML);
   });
 
   await page.evaluate(() => {
     document.getElementsByClassName('-nal3')[1].click()
   });
-  await page.waitFor(1000);
+  await page.waitFor(2000);
 
   const followers = await page.evaluate(() => {
     const list = document.getElementsByClassName('_0mzm- ZUqME');
